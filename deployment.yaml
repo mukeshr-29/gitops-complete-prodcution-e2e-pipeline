@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: complete-prodcution-e2e-app
-          image: mukeshr29/complete-production-pipeline:null-27
+          image: mukeshr29/complete-production-pipeline:null-28
           resources:
             limits:
               memory: "256Mi"
