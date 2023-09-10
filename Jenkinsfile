@@ -1,9 +1,8 @@
 pipeline {
-    agent {
-        label "jenkins-agent"
-    }
+    agent any
+    
     environment {
-        APP_NAME = "complete-prodcution-e2e-pipeline"
+        APP_NAME = "complete-production-pipeline"
     }
 
     stages {
@@ -16,7 +15,7 @@ pipeline {
     
         stage("Checkout from SCM") {
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/dmancloud/gitops-complete-prodcution-e2e-pipeline'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline.git'
             }
         }
     
@@ -35,13 +34,13 @@ pipeline {
         stage("Push the changed deployment file to Git") {
             steps {
                 sh """
-                    git config --global user.name "dmancloud"
+                    git config --global user.name "mukeshr-29"
                     git config --global user.email "dinesh@dman.cloud"
                     git add deployment.yaml
-                    git commit -m "Updated Deployment Manifest"
+                    git commit -m "mine"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/dmancloud/gitops-complete-prodcution-e2e-pipeline main"
+                    sh "git push https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline main"
                 }
             }
         }
