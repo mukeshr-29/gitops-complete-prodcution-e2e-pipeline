@@ -15,7 +15,7 @@ pipeline {
     
         stage("Checkout from SCM") {
             steps {
-                git branch: 'main', credentialsId: 'github', url:'https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline'
+                git branch: 'main', credentialsId: 'github', url:'https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline.git'
             }
         }
     
@@ -40,7 +40,7 @@ pipeline {
                     git commit -m "mine"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline main"
+                    sh "git push https://github.com/mukeshr-29/gitops-complete-prodcution-e2e-pipeline.git main"
                 }
             }
         }
